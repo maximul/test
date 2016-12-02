@@ -3,5 +3,5 @@
     <input type="text" id="title" name="title"><br>
     <label for="image">Файл</label>
     <input type="file" id="image" name="image"><br>
-    <input type="submit">
+    <input type="submit" value="Загрузить">
 </form>
