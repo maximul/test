@@ -9,11 +9,18 @@ function File_upload($field)
         return false;
 
     if (is_uploaded_file($_FILES[$field]['tmp_name'])) {
-        $res = move_uploaded_file($_FILES[$field]['tmp_name'], __DIR__ . '/../img/' . iconv("UTF-8", "Windows-1251", $_FILES[$field]['name']));
-        if (!$res) {
-            return false;
+        $image = preg_match('/image/', $_FILES[$field]['type']);
+        //print_r($_FILES); die();
+        if ($image) {
+            $res = move_uploaded_file($_FILES[$field]['tmp_name'], __DIR__ . '/../img/' . iconv("UTF-8", "Windows-1251", $_FILES[$field]['name']));
+            if (!$res) {
+                return false;
+            } else {
+                return '/img/' . $_FILES[$field]['name'];
+            } 
         } else {
-            return '/img/' . $_FILES[$field]['name'];
+            echo '<div style="color: red">Выбран не верный тип файла.</div>';
+            return false;
         }
     }
     return false;
