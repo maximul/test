@@ -1,6 +1,6 @@
 <?php
 
-function File_upload($field)
+function fileUpload($field)
 {
     if (empty($_FILES))
         return false;

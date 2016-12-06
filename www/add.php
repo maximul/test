@@ -11,7 +11,7 @@ if (!empty($_POST)) {
         $data['title'] = $_POST['title'];
 
 		if (!empty($_FILES)) {
-			$res = File_upload('image');
+			$res = fileUpload('image');
 			if (false !== $res) {
 				$data['image'] = $res;
 			}
